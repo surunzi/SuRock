@@ -1,0 +1,10 @@
+#error {
+    position: absolute;
+    width: 800px;
+    height: 100px;
+    left: -400px;
+    top: -80px;
+    font-size: 30px;
+    line-height: 100px;
+    background-color: rgba(255, 255, 255, 0.5);
+}

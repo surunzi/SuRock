@@ -1,0 +1,39 @@
+.center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+}
+
+.container {
+    width: 1024px !important;
+}
+
+.control-label {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 11px;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-header {
+    float: left;
+}
+
+.navbar-nav {
+    float: left;
+    margin: 0;s
+}
+
+.navbar-nav>li {
+    float: left;
+}
+
+.navbar-nav>li>a {
+    padding-top: 19.5px;
+    padding-bottom: 19.5px;
+}
