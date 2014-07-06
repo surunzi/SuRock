@@ -48,4 +48,16 @@ public function select($username, $password) {
     }
 }
 
+// 通过用户ID查找
+public function select_with_id($user_id) {
+    $cmd = 'SELECT * FROM user WHERE user_id=:user_id';
+    $param = array('user_id' => $user_id);
+    $result = $this->run($cmd, $param);
+    if ($result->rowCount() == 1) {
+        return $result->fetch();
+    } else {
+        return false;
+    }
+}
+
 }

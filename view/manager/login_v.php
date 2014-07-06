@@ -1,5 +1,5 @@
 <div class="center">
-    <form id="login-form" class="form-horizontal" action="<?php e(URL)?>manager/loginHandler" method="post">
+    <form id="login-form" class="form-horizontal well" action="<?php e(URL)?>manager/loginHandler" method="post">
         <div class="form-group">
             <label for="input-username" class="control-label col-xs-3">学号</label>
             <div class="col-xs-9">

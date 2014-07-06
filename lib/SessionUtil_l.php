@@ -7,10 +7,14 @@ public static function destroy() {
     session_destroy();
 }
 
-// 获取Session
+// 获取Session，无则返回null
 public static function get($name) {
     @session_start();
-    return $_SESSION[$name];
+    if (isset($_SESSION[$name])) {
+        return $_SESSION[$name];
+    } else {
+        return null;
+    }
 }
 
 // 设置Session

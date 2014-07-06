@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <form id="signup-form" class="form-horizontal col-xs-8 col-xs-offset-2" action="<?php e(URL);?>manager/signupHandler" method="post">
+        <form id="signup-form" class="form-horizontal col-xs-8 col-xs-offset-2 well" action="<?php e(URL);?>manager/signupHandler" method="post">
             <div class="form-group">
                 <label for="input-username" class="control-label col-xs-2">学号</label>
                 <div class="col-xs-9">
@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
             <div class="col-xs-9 col-xs-offset-2">
-                <a class="btn btn-default" href="<?php e(URL);?>manager/login">登录</a>
+                <a class="btn btn-default" href="<?php e(URL);?>manager/">登录</a>
                 <button type="submit" class="btn btn-primary">报名</button>
             </div>
         </div>

@@ -37,3 +37,9 @@
     padding-top: 19.5px;
     padding-bottom: 19.5px;
 }
+
+@media (max-width: 767px) {
+    .navbar-nav .open .dropdown-menu {
+        
+    }
+}

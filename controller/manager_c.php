@@ -5,14 +5,13 @@ function __construct(){
 	parent::__construct();
 }
 
-public function index() {
-	$view_data = array ('title' => '模板标题');
-	$this->render("video/index", $view_data);
-}
-
 // 登录界面
-public function login() {
-    $this->my_render('login');
+public function index() {
+    // 已经登录的话自动跳转到用户中心页
+    if (Util::is_login()) {
+        Util::go(URL.'manager/usercenter');
+    }
+	$this->my_render('login');
 }
 
 // 处理登录
@@ -24,10 +23,16 @@ public function loginHandler() {
     }
 
     if (SQLUtil::login($username, $password)) {
-        $this->usercenter();
+        Util::go(URL.'manager/usercenter');
     } else {
         $this->errorMsg('用户名或密码填写错误');
     }
+}
+
+// 退出登录
+public function logout() {
+    SessionUtil::destroy();
+    Util::go(URL.'manager');
 }
 
 // 注册
@@ -49,12 +54,19 @@ public function signupHandler() {
         $this->errorMsg('该用户已存在');
     }
 
+    // 插入数据
     $userTable->insert($username, $password, $realname);
+    $result = $userTable->select($username, $password);
+    $userExtraTable = new UserExtraTable;
+    $userExtraTable->insert($result['user_id']);
+
     SQLUtil::login($username, $password);
+    $this->usercenter();
 }
 
 // 用户中心
 public function usercenter() {
+    Util::need_to_login();
     $this->my_render('usercenter');
 }
 

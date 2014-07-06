@@ -4,7 +4,8 @@ class Error extends Controller {
 //错误列表
 private $error = array (0 => '出错啦！',
 						1 => '页面不存在',
-						2 => '填写参数不完整'
+						2 => '填写参数不完整',
+                        3 => '无权访问该页'
                         );
 
 function __construct(){

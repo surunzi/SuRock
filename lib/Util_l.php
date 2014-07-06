@@ -63,6 +63,14 @@ public static function get_datetime(){
 	return date("Y-m-d H:i:s");
 }
 
+/* 跳转到指定的URL地址
+ * url 要跳转到的URL
+ */
+public static function go($url) {
+    header('location:'.$url);
+    exit();
+}
+
 //将页面转回发出请求的页面，如果是直接访问则跳转到主页
 public static function go_back(){
 	if(isset($_SERVER['HTTP_REFERER'])){
@@ -71,6 +79,34 @@ public static function go_back(){
 	}else{
 		header('location:index');
 	}
+}
+
+// 是否具有某个权限
+public function has_authority($num) {
+    $user_type = SessionUtil::get('user_type');
+    // 超级管理员具有所有权限
+    if ($user_type == 1) {
+        return true;
+    }
+
+    $authority = SessionUtil::get('user_authority');
+    return in_array(''.$num, $authority);
+}
+
+// 判断是否已经登录
+public static function is_login() {
+    if (SessionUtil::get('is_login') == true) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// 如果没有登录，则跳转到登录页面
+public static function need_to_login() {
+    if (!Util::is_login()) {
+        Util::go(URL.'manager/');
+    }
 }
 
 /*简单过滤HTML标签
