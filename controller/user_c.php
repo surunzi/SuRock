@@ -26,6 +26,17 @@ public function addUserType() {
     Util::go_back();
 }
 
+// 删除用户
+public function delete($id) {
+    $user_table = new UserTable;
+    $user_table->delete($id);
+
+    $user_extra_table = new UserExtraTable;
+    $user_extra_table->delete($id);
+
+    Util::go_back();
+}
+
 // 删除角色
 public function deleteType($id) {
     $user_type_table = new UserTypeTable;
@@ -40,13 +51,18 @@ public function manage($page = 1) {
     if (!Util::has_authority(10)) {
         $this->error(3);
     }
+
     $user_table = new UserTable;
     $count = $user_table->count();
     $page = Util::calculate_page($count, 10, $page);
     $users = $user_table->select_ten($page['start_num']);
+    $user_type_table = new UserTypeTable;
+    $types = $user_type_table->select_all();
+
     $view_data = array(
         'users' => $users,
-        'page' => $page
+        'page' => $page,
+        'types' => $types
         );
     $this->my_render('manage', $view_data);
 }
@@ -82,7 +98,33 @@ public function modifyInfo($user_id = null) {
 
 // 管理指定用户
 public function search() {
-    $this->my_render('search');
+    if (!Util::has_authority(10)) {
+        $this->error(3);
+    }
+
+    $key = Util::fetch_get('key');
+    if ($key != null) {
+        $user_table = new UserTable;
+        $result = $user_table->select_with_login($key);
+        if ($result != false) {
+            $user_type_table = new UserTypeTable;
+            $types = $user_type_table->select_all();
+            $view_data = array(
+                'has_key' => true,
+                'has_result' => true,
+                'user' => $result,
+                'types' => $types
+                );
+        } else {
+            $view_data = array(
+                'has_key' => true,
+                'has_result' => false
+                );
+        }
+        $this->my_render('search', $view_data);
+    } else {
+        $this->my_render('search');
+    }
 }
 
 // 管理用户角色
@@ -136,6 +178,34 @@ public function updateUser($id) {
 
     $user_extra_table = new UserExtraTable;
     $user_extra_table->update($id, $sex, $dormitory, $birthday, $major, $birthplace, $qq);
+
+    Util::go_back();
+}
+
+// 更新用户的权限
+public function updateUserAuthority($id) {
+    if (!Util::has_authority(10)) {
+        $this->error(3);
+    }
+
+    $authority = Util::fetch_post('authority');
+
+    $user_table = new UserTable;
+    $user_table->update_authority($id, $authority);
+
+    Util::go_back();
+}
+
+// 更新用户的角色
+public function updateUserType($id) {
+    if (!Util::has_authority(10)) {
+        $this->error(3);
+    }
+
+    $type = Util::fetch_post('type');
+
+    $user_table = new UserTable;
+    $user_table->update_type($id, $type);
 
     Util::go_back();
 }

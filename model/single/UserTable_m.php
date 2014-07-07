@@ -26,6 +26,13 @@ public function count() {
     return $result->rowCount();
 }
 
+// 删除数据
+public function delete($id) {
+    $cmd   = 'DELETE FROM user WHERE user_id = :user_id';
+    $param = array ('user_id' => $id);
+    $this->db->run($cmd, $param);
+}
+
 // 插入新数据
 public function insert($username, $password, $realname) {
     $cmd = 'INSERT INTO user(user_login, user_pass, user_name, user_created, user_modified)
@@ -88,6 +95,18 @@ public function select_with_id($user_id) {
     }
 }
 
+// 通过学号查找
+public function select_with_login($user_login) {
+    $cmd = 'SELECT * FROM user WHERE user_login=:user_login AND user_type<>1';
+    $param = array('user_login' => $user_login);
+    $result = $this->run($cmd, $param);
+    if ($result->rowCount() == 1) {
+        return $result->fetch();
+    } else {
+        return false;
+    }
+}
+
 // 更新数据
 public function update($id, $phone, $email, $department) {
     $cmd   = 'UPDATE user SET user_phone=:user_phone, user_email=:user_email, user_department=:user_department, user_modified=:user_modified WHERE user_id=:user_id';
@@ -96,6 +115,24 @@ public function update($id, $phone, $email, $department) {
                     'user_email' => Util::simple_purify($email),
                     'user_department' => $department,
                     'user_modified' => Util::get_datetime()
+                   );
+    $this->run($cmd, $param);
+}
+
+// 更新用户角色
+public function update_authority($id, $authority) {
+    $cmd   = 'UPDATE user SET user_authority=:user_authority WHERE user_id=:user_id';
+    $param = array ('user_id' => $id,
+                    'user_authority' => $authority
+                   );
+    $this->run($cmd, $param);
+}
+
+// 更新用户角色
+public function update_type($id, $type) {
+    $cmd   = 'UPDATE user SET user_type=:user_type WHERE user_id=:user_id';
+    $param = array ('user_id' => $id,
+                    'user_type' => $type
                    );
     $this->run($cmd, $param);
 }

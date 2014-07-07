@@ -5,6 +5,13 @@ function __construct(){
 	parent::__construct();
 }
 
+// 删除数据
+public function delete($id) {
+    $cmd   = 'DELETE FROM user_extra WHERE user_id = :user_id';
+    $param = array ('user_id' => $id);
+    $this->db->run($cmd, $param);
+}
+
 // 新建数据
 public function insert($user_id) {
     $cmd = 'INSERT INTO user_extra(user_id) VALUES(:user_id)';
