@@ -41,5 +41,27 @@ public static function get_authority($user_type_id, $user_authority) {
     return explode(',', $result);
 }
 
+// 获取部门
+public static function get_department($dep_id) {
+    if ($dep_id == 0) {
+        return '无';
+    }
+    $department_table = new DepartmentTable;
+    $result = $department_table->select($dep_id);
+    return $result['dep_name'];
+}
+
+// 获取角色名
+public static function get_type_name($user_type_id) {
+    if ($user_type_id == 0) {
+        return '会员';
+    } else if ($user_type_id == 1) {
+        return '管理员';
+    }
+    $user_type_table = new UserTypeTable;
+    $result = $user_type_table->select($user_type_id);
+    return  $result['user_type_name'];
+}
+
 }
 ?>

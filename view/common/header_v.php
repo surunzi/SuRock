@@ -6,19 +6,20 @@
 
 	<title>
     <?php
-    	if (isset($this->title)) {
-    		echo $this->title;
-    	}else{
-    		echo TITLE;
-    	}
+    if (isset($this->title)) {
+    	echo $this->title;
+    }else{
+    	echo TITLE;
+    }
 	?>
     </title>
 
     <?php
-	   foreach ($this->css as $key => $value) {?>
+	foreach ($this->css as $key => $value) {
+    ?>
 	   <link rel="stylesheet" href="<?php e(URL.CSS.$value.'.css');?>">
     <?php
-        }
+    }
     ?>
 
 </head>

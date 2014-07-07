@@ -5,11 +5,32 @@ function __construct(){
 	parent::__construct();
 }
 
+// 重置部门
+public function clear_department($dep_id) {
+    $cmd = 'UPDATE user SET user_department=0 WHERE user_department=:user_department';
+    $param = array('user_department' => $dep_id);
+    $this->run($cmd, $param);
+}
+
+// 重置角色
+public function clear_type($type_id) {
+    $cmd = 'UPDATE user SET user_type=0 WHERE user_type=:user_type';
+    $param = array('user_type' => $type_id);
+    $this->run($cmd, $param);
+}
+
+// 获取数目
+public function count() {
+    $cmd = 'SELECT * FROM user WHERE user_type<>1';
+    $result = $this->run($cmd);
+    return $result->rowCount();
+}
+
 // 插入新数据
 public function insert($username, $password, $realname) {
     $cmd = 'INSERT INTO user(user_login, user_pass, user_name, user_created, user_modified)
         VALUES(:user_login, :user_pass, :user_name, :user_created, :user_created)';
-    $param = array('user_login' => $username,
+    $param = array('user_login' => Util::simple_purify($username),
                    'user_pass' => md5($password),
                    'user_name' => $realname,
                    'user_created' => Util::get_datetime(),
@@ -48,6 +69,13 @@ public function select($username, $password) {
     }
 }
 
+// 获取用户列表
+public function select_ten($start_num) {
+    $cmd = 'SELECT * FROM user user WHERE user_type<>1 ORDER BY user_created DESC LIMIT '.$start_num.', 10';
+    $result = $this->db->run($cmd);
+    return $result->fetchAll();
+}
+
 // 通过用户ID查找
 public function select_with_id($user_id) {
     $cmd = 'SELECT * FROM user WHERE user_id=:user_id';
@@ -58,6 +86,18 @@ public function select_with_id($user_id) {
     } else {
         return false;
     }
+}
+
+// 更新数据
+public function update($id, $phone, $email, $department) {
+    $cmd   = 'UPDATE user SET user_phone=:user_phone, user_email=:user_email, user_department=:user_department, user_modified=:user_modified WHERE user_id=:user_id';
+    $param = array ('user_id' => $id,
+                    'user_phone' => Util::simple_purify($phone),
+                    'user_email' => Util::simple_purify($email),
+                    'user_department' => $department,
+                    'user_modified' => Util::get_datetime()
+                   );
+    $this->run($cmd, $param);
 }
 
 }

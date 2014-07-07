@@ -3,7 +3,7 @@
         <img src="<?php e(URL);?>public/img/default_avatar.jpg">
         <h3 class="col-xs-10 col-xs-offset-2"><?php e($this->stunum.' '.$this->name);?></h3>
     </div>
-    <div class="content" class="row">
+    <div class="content row">
         <table class="col-xs-12 table table-striped">
             <tbody>
                 <tr>
@@ -16,7 +16,7 @@
                 </tr>
                 <tr>
                     <td>性别</td>
-                    <td>男</td>
+                    <td><?php e($this->sex);?></td>
                 </tr>
                 <tr>
                     <td>手机</td>
@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>部门</td>
-                    <td>技术部</td>
+                    <td><?php e($this->department);?></td>
                 </tr>
                 <tr>
                     <td>宿舍</td>
@@ -52,7 +52,7 @@
                 </tr>
                 <tr>
                     <td>类型</td>
-                    <td>管理员</td>
+                    <td><?php e($this->usertype);?></td>
                 </tr>
                 <tr>
                     <td>注册</td>

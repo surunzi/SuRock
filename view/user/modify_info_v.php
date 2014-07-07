@@ -1,11 +1,11 @@
 <div id="modify-info" class="container well">
-    <form id="modify_info_form" class="form-horizontal">
+    <form id="modify_info_form" class="form-horizontal" action="<?php e(URL.'user/updateUser/'.$this->id);?>" method="post">
         <div class="form-group">
             <label for="input-sex" class="control-label col-xs-2">性别</label>
             <div class="col-xs-9">
                 <select id="input-sex" class="form-control" name="sex">
-                    <option value="1">男</option>
-                    <option value="0">女</option>
+                    <option value="1" <?php if ($this->sex == 1) {e('selected');}?>>男</option>
+                    <option value="0" <?php if ($this->sex == 0) {e('selected');}?>>女</option>
                 </select>
             </div>
         </div>
@@ -18,7 +18,7 @@
         <div class="form-group">
             <label for="input-email" class="control-label col-xs-2">邮箱</label>
             <div class="col-xs-9">
-                <input id="input-email" class="form-control" type="text" name="email" value="<?php e($this->email);?>">
+                <input id="input-email" class="form-control" type="email" name="email" value="<?php e($this->email);?>">
             </div>
         </div>
         <div class="form-group">
@@ -31,8 +31,14 @@
             <label for="input-department" class="control-label col-xs-2">部门</label>
             <div class="col-xs-9">
                 <select id="input-department" class="form-control" name="department">
-                    <option value="1">技术部</option>
-                    <option value="2">运营部</option>
+                    <option value="0" <?php if ($this->department == 0) {e('selected');}?>>无</option>
+                    <?php
+                    foreach ($this->departments as $key => $value) {
+                    ?>
+                        <option value="<?php e($value['dep_id']);?>" <?php if ($this->department == $value['dep_id']) {e('selected');}?>><?php e($value['dep_name']);?></option>
+                    <?php
+                    }
+                    ?>
                 </select>
             </div>
         </div>
@@ -57,7 +63,7 @@
         <div class="form-group">
             <label for="input-birthday" class="control-label col-xs-2">生日 </label>
             <div class="col-xs-9">
-                <input id="input-birthday" class="form-control" type="text" name="birthday" value="<?php e($this->birthday);?>">
+                <input id="input-birthday" class="form-control" type="date" name="birthday" value="<?php e($this->birthday);?>">
             </div>
         </div>
         <div class="form-group">

@@ -7,18 +7,18 @@
         <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">用户 <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="<?php e(URL);?>user/viewInfo" target="content">浏览个人信息</a></li>
-                <li><a href="<?php e(URL);?>user/modifyInfo"target="content">修改个人信息</a></li>
-                <li><a href="<?php e(URL);?>user/manage"target="content">管理所有用户</a></li>
-                <li><a href="<?php e(URL);?>user/search"target="content">管理指定用户</a></li>
-                <li><a href="<?php e(URL);?>user/type"target="content">管理用户角色</a></li>
+                <li><a href="<?php e(URL);?>user/viewInfo/" target="content">浏览个人信息</a></li>
+                <li><a href="<?php e(URL);?>user/modifyInfo/" target="content">修改个人信息</a></li>
+                <li><a href="<?php e(URL);?>user/manage/" target="content">管理所有用户</a></li>
+                <li><a href="<?php e(URL);?>user/search/" target="content">管理指定用户</a></li>
+                <li><a href="<?php e(URL);?>user/type/" target="content">管理用户角色</a></li>
             </ul>
         </li>
         <!-- 社团 -->
         <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">社团 <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="#">管理社团部门</a></li>
+                <li><a href="<?php e(URL);?>association/manageDepartment/" target="content">管理社团部门</a></li>
             </ul>
         </li>
         <!-- 信息 -->
@@ -41,7 +41,7 @@
         <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">系统 <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="<?php e(URL);?>manager/logout">退出</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">退出</a></li>
             </ul>
         </li>
     </ul>

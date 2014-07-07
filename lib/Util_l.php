@@ -5,6 +5,32 @@
  */
 class Util {
 
+/* 分页
+ * total 总的数据条目
+ * single_page_num 每页数目
+ * page 当前请求页
+ */
+public static function calculate_page($total, $single_page_num, $page) {
+    $page_result = array();
+    if ($total % $single_page_num == 0) {
+        $page_num = floor($total / $single_page_num);
+    } else {
+        $page_num = ceil($total / $single_page_num);
+    }
+    if ($page_num == 0) {
+        $page_num = 1;
+    }
+    $page = ($page > $page_num ? $page_num : $page);
+    $page = ($page < 0 ? 1 : $page);
+    $page_result['no_pre'] = ($page == 1 ? true : false); // 有没有上页
+    $page_result['no_next'] = ($page == $page_num ? true : false); // 有没有下页
+    $page_result['no_page_nav'] = ($page_num == 1 ? true : false); // 有没有上下页
+    $page_result['page_num'] = $page_num; // 总页数
+    $page_result['start_num'] = ($page - 1) * $single_page_num; // 起始位置
+    $page_result['page'] = $page; // 当前页码
+    return $page_result;
+}
+
 //生成验证码图片
 public static function captcha(){
 	session_start();
@@ -39,7 +65,7 @@ public static function captcha(){
  *name GET的参数名
  */
 public static function fetch_get($name){
-	if(isset($_GET[$name]) && !empty($_GET[$name])){
+	if(isset($_GET[$name]) && trim($_GET[$name]) != ''){
 		return $_GET[$name];
 	}else{
 		return null;
@@ -50,17 +76,22 @@ public static function fetch_get($name){
  *name POST的参数名
  */
 public static function fetch_post($name){
-	if(isset($_POST[$name]) && !empty($_POST[$name])){
+	if(isset($_POST[$name]) && trim($_POST[$name]) != ''){
 		return $_POST[$name];
 	}else{
 		return null;
 	}
 }
 
-//获取当前的日期，精确到秒
+// 获取当前的日期，精确到秒
 public static function get_datetime(){
 	date_default_timezone_set('Asia/Chongqing');
 	return date("Y-m-d H:i:s");
+}
+
+// 获取性别
+public static function get_sex($num) {
+    return $num == 1?'男':'女';
 }
 
 /* 跳转到指定的URL地址
@@ -113,7 +144,7 @@ public static function need_to_login() {
  *data 要过滤的数据
  */
 public static function simple_purify($data){
-	return str_replace("\n", '<br>', strip_tags($data));
+	return strip_tags($data);
 }
 
 }

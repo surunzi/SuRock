@@ -17,4 +17,18 @@ public function insert($user_id) {
     }
 }
 
+// 更新数据
+public function update($id, $sex, $dormitory, $birthday, $major, $birthplace, $qq) {
+    $cmd   = 'UPDATE user_extra SET user_sex=:user_sex, user_dormitory=:user_dormitory, user_birthday=:user_birthday, user_major=:user_major, user_birthplace=:user_birthplace, user_qq=:user_qq WHERE user_id=:user_id';
+    $param = array ('user_id' => $id,
+                    'user_sex' => $sex,
+                    'user_dormitory' => Util::simple_purify($dormitory),
+                    'user_birthday' => $birthday,
+                    'user_major' => Util::simple_purify($major),
+                    'user_birthplace' => Util::simple_purify($birthplace),
+                    'user_qq' => Util::simple_purify($qq)
+                   );
+    $this->run($cmd, $param);
+}
+
 }

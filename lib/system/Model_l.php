@@ -10,7 +10,7 @@ function __construct() {
     $this->db = &$db;
 }
 
-public function run($cmd, $param) {
+public function run($cmd, $param = null) {
     return $this->db->run($cmd, $param);
 }
 

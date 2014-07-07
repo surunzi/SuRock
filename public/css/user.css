@@ -18,6 +18,10 @@
 
 #user-info .title img{
     position: absolute;
-    left: 15px;
+    left: 0;
     border: 4px solid #2c3e50;
+}
+
+#user-type-hint {
+    margin-top: 30px;
 }
