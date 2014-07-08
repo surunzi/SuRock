@@ -11,6 +11,13 @@ function __construct() {
 	$this->view = new View();
 }
 
+// 检查权限
+public function authority($num) {
+    if (!Util::has_authority($num)) {
+        $this->error(3);
+    }
+}
+
 /* 出错
  * error_num 错误代码
  */

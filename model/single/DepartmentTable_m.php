@@ -9,7 +9,7 @@ function __construct(){
 public function delete($id) {
     $cmd   = 'DELETE FROM department WHERE dep_id = :dep_id';
     $param = array ('dep_id' => $id);
-    $this->db->run($cmd, $param);
+    $this->run($cmd, $param);
 }
 
 // 插入新数据

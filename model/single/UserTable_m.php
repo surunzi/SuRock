@@ -78,8 +78,8 @@ public function select($username, $password) {
 
 // 获取用户列表
 public function select_ten($start_num) {
-    $cmd = 'SELECT * FROM user user WHERE user_type<>1 ORDER BY user_created DESC LIMIT '.$start_num.', 10';
-    $result = $this->db->run($cmd);
+    $cmd = 'SELECT * FROM user WHERE user_type<>1 ORDER BY user_created DESC LIMIT '.$start_num.', 10';
+    $result = $this->run($cmd);
     return $result->fetchAll();
 }
 

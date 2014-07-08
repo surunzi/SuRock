@@ -2,6 +2,29 @@ body {
     background: #fff;
 }
 
+.notification {
+    margin-bottom: 30px;
+}
+
+.notification h2 {
+    font-size: 20px;
+    border-bottom: 1px solid #2c3e50;
+    padding-bottom: 5px;
+    line-height: 35px;
+}
+
+.notification h2 span {
+    font-size: 15px;
+    line-height: 35px;
+    width: 150px;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: #18bc9c;
+    margin-right: 10px;
+    text-align: center;
+    color: #fff;
+}
+
 #footer {
     min-height: 100px;
     background-color: #ecf0f1;

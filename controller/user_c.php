@@ -11,9 +11,7 @@ public function index(){
 
 // 添加用户角色
 public function addUserType() {
-    if (!Util::has_authority(10)) {
-        $this->error(3);
-    }
+    $this->authority(10);
 
     $name = Util::fetch_post('name');
     $authority = Util::fetch_post('authority');
@@ -48,9 +46,7 @@ public function deleteType($id) {
 
 // 管理所有用户
 public function manage($page = 1) {
-    if (!Util::has_authority(10)) {
-        $this->error(3);
-    }
+    $this->authority(10);
 
     $user_table = new UserTable;
     $count = $user_table->count();
@@ -184,9 +180,7 @@ public function updateUser($id) {
 
 // 更新用户的权限
 public function updateUserAuthority($id) {
-    if (!Util::has_authority(10)) {
-        $this->error(3);
-    }
+    $this->authority(10);
 
     $authority = Util::fetch_post('authority');
 
@@ -198,9 +192,7 @@ public function updateUserAuthority($id) {
 
 // 更新用户的角色
 public function updateUserType($id) {
-    if (!Util::has_authority(10)) {
-        $this->error(3);
-    }
+    $this->authority(10);
 
     $type = Util::fetch_post('type');
 

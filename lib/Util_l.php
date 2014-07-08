@@ -147,4 +147,26 @@ public static function simple_purify($data){
 	return strip_tags($data);
 }
 
+/* 时间处理
+ * the_time 当前时间
+ */
+public static function time_tran($the_time){
+    date_default_timezone_set('Asia/Chongqing');
+    $now_time = strtotime(date("Y-m-d H:i:s"));
+    $show_time = strtotime($the_time);
+    $dur = $now_time - $show_time;
+    if($dur > 259200){
+        return date("Y-m-d", $show_time);
+    }
+    if($dur < 60){
+        return $dur.'秒前';
+    }elseif($dur < 3600){
+        return floor($dur/60).'分钟前';
+    }elseif($dur < 86400){
+        return floor($dur/3600).'小时前';
+    }else{
+        return floor($dur/86400).'天前';
+    }
+}
+
 }

@@ -16,7 +16,7 @@
                 <?php }?>
             </ul>
         </li>
-        <?php if (Util::has_authority(20)) {?>
+        <?php if (Util::has_authority(20) || Util::has_authority(21)) {?>
             <!-- 社团 -->
             <li class="dropdown">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">社团 <b class="caret"></b></a>
@@ -24,6 +24,10 @@
                     <?php if (Util::has_authority(20)) {?>
                         <li><a href="<?php e(URL);?>association/manageDepartment/" target="content">管理社团部门</a></li>
                         <li><a href="<?php e(URL);?>association/modifyAssoInfo/" target="content">修改社团信息</a></li>
+                    <?php }?>
+                    <?php if (Util::has_authority(21)) {?>
+                        <li><a href="<?php e(URL);?>association/notify/" target="content">发布社团公告</a></li>
+                        <li><a href="<?php e(URL);?>association/manageNotify/" target="content">管理社团公告</a></li>
                     <?php }?>
                 </ul>
             </li>
