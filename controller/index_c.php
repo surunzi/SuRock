@@ -7,7 +7,13 @@ function __construct(){
 }
 
 public function index(){
-	$this->render("index/login");
+	$this->my_render('index');
+}
+
+// 专有渲染函数
+private function my_render($view, $data = null) {
+    $this->view->insert_css('index');
+    $this->render('index/'.$view, $data);
 }
 
 }

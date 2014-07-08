@@ -61,7 +61,7 @@ public function signupHandler() {
     $userExtraTable->insert($result['user_id']);
 
     SQLUtil::login($username, $password);
-    $this->usercenter();
+    Util::go(URL.'manager/');
 }
 
 // 用户中心

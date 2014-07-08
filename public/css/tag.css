@@ -1,6 +1,15 @@
+* {
+    font-family: 微软雅黑;
+}
+
 body {
     background: url(../img/bg.jpg) no-repeat center center fixed;
     background-size: cover;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 ::-webkit-scrollbar-thumb{

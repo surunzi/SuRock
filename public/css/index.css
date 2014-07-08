@@ -1,0 +1,53 @@
+body {
+    background: #fff;
+}
+
+#footer {
+    min-height: 100px;
+    background-color: #ecf0f1;
+    padding: 15px 0;
+}
+
+#nav {
+    width: 100%;
+    background-color: #fff;
+}
+
+#nav ul {
+    width: 1024px;
+    margin: 0 auto;
+    display: table;
+    padding: 0 30px;
+}
+
+#nav ul li {
+    float: left;
+    margin-right: 40px;
+    text-align: left;
+}
+
+#nav ul li a{
+    font-size: 18px;
+    line-height: 100px;
+}
+
+#pic {
+    background: url(../img/index-pic.jpg) no-repeat center center;
+    background-size: cover;
+    height: 450px;
+}
+
+#pic h1 {
+    color: #fff;
+    margin-top: 50px;
+    text-shadow: 0 0 5px #000;
+}
+
+#pic p {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 15px;
+}
+
+#sub-module {
+    margin: 50px auto;
+}

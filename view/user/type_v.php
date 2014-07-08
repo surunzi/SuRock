@@ -41,6 +41,8 @@
         <div class="alert alert-info alert-dismissable">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <p>10 - 查看并修改所有用户信息，管理用户角色，搜索并管理指定用户</p>
+            <p>20 - 管理部门，修改社团信息</p>
+            <p>30 - 查看通讯录等信息</p>
         </div>
     </div>
 </div>
