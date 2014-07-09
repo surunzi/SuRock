@@ -128,6 +128,36 @@ public function modifyAssoInfoHandler() {
     Util::go_back();
 }
 
+// 更改社团联系方式
+public function modifyContact() {
+    $this->authority(20);
+
+    $asso_table = new AssociationTable;
+    $contact_phone = $asso_table->get('contact_phone');
+    $contact_email = $asso_table->get('contact_email');
+
+    $view_data = array(
+        'phone' => $contact_phone,
+        'email' => $contact_email
+        );
+
+    $this->my_render('modify_contact', $view_data);
+}
+
+// 处理更改社团联系方式
+public function modifyContactHandler() {
+    $this->authority(20);
+
+    $phone = Util::fetch_post('phone');
+    $email = Util::fetch_post('email');
+
+    $asso_table = new AssociationTable;
+    $asso_table->set('contact_phone', $phone);
+    $asso_table->set('contact_email', $email);
+
+    Util::go_back();
+}
+
 // 更新部门
 public function updateDepartment($id) {
     $this->authority(20);

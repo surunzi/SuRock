@@ -24,6 +24,7 @@
                     <?php if (Util::has_authority(20)) {?>
                         <li><a href="<?php e(URL);?>association/manageDepartment/" target="content">管理社团部门</a></li>
                         <li><a href="<?php e(URL);?>association/modifyAssoInfo/" target="content">修改社团信息</a></li>
+                        <li><a href="<?php e(URL);?>association/modifyContact/" target="content">修改联系方式</a></li>
                     <?php }?>
                     <?php if (Util::has_authority(21)) {?>
                         <li><a href="<?php e(URL);?>association/notify/" target="content">发布社团公告</a></li>
@@ -37,7 +38,7 @@
         <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">信息 <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="#">通讯录</a></li>
+                <li><a href="<?php e(URL);?>info/contactBook/" target="content">通讯录</a></li>
             </ul>
         </li>
         <?php }?>
