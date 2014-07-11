@@ -12,6 +12,13 @@ public function count() {
     return $result->rowCount();
 }
 
+// 删除数据
+public function delete($id) {
+    $cmd   = 'DELETE FROM message WHERE msg_id = :msg_id';
+    $param = array ('msg_id' => $id);
+    $this->run($cmd, $param);
+}
+
 // 新建留言
 public function insert($name, $email, $content) {
     $cmd = 'INSERT INTO message(msg_name, msg_email, msg_content, msg_created)

@@ -25,6 +25,7 @@
                         <li><a href="<?php e(URL);?>association/manageDepartment/" target="content">管理社团部门</a></li>
                         <li><a href="<?php e(URL);?>association/modifyAssoInfo/" target="content">修改社团信息</a></li>
                         <li><a href="<?php e(URL);?>association/modifyContact/" target="content">修改联系方式</a></li>
+                        <li><a href="<?php e(URL);?>association/manageMessage/" target="content">管理社团留言</a></li>
                     <?php }?>
                     <?php if (Util::has_authority(21)) {?>
                         <li><a href="<?php e(URL);?>association/notify/" target="content">发布社团公告</a></li>
@@ -52,7 +53,20 @@
                 </ul>
             </li>
         <?php }?>
-        <!-- 活动 -->
+        <?php if (Util::has_authority(50) || Util::has_authority(51)) {?>
+            <!-- 文档上传 -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">文档 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php e(URL);?>document/view/" target="content">浏览文档</a></li>
+                    <?php if (Util::has_authority(51)) {?>
+                        <li><a href="<?php e(URL);?>document/upload/" target="content">上传文档</a></li>
+                        <li><a href="<?php e(URL);?>document/manage/" target="content">文档管理</a></li>
+                     <?php }?>
+                </ul>
+            </li>
+        <?php }?>
+        <!--
         <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">活动 <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -64,15 +78,7 @@
                 <li><a href="<?php e(URL);?>manager/logout/">活动照片</a></li>
                 <li><a href="<?php e(URL);?>manager/logout/">活动资料</a></li>
             </ul>
-        </li>
-        <!-- 文档 -->
-        <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">文档 <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li><a href="<?php e(URL);?>manager/logout/">上传文档</a></li>
-                <li><a href="<?php e(URL);?>manager/logout/">文档中心</a></li>
-            </ul>
-        </li>
+        </li>-->
         <!-- 系统 -->
         <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">系统 <b class="caret"></b></a>

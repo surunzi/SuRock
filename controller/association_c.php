@@ -48,6 +48,15 @@ public function deleteDepartment($id) {
     Util::go_back();
 }
 
+// 删除留言
+public function deleteMessage($id) {
+    $this->authority(20);
+    
+    $msg_table = new MessageTable;
+    $msg_table->delete($id);
+    Util::go_back();
+}
+
 // 删除公告
 public function deleteNotify($id) {
     $this->authority(21);
@@ -72,12 +81,29 @@ public function notify() {
 }
 
 // 部门管理
-public function manageDepartment() {
+public function manageDepartment($page = 1) {
     $this->authority(20);
     
     $department_table = new DepartmentTable;
     $view_data = array('deps' => $department_table->select_all());
     $this->my_render('department', $view_data);
+}
+
+// 管理社团留言
+public function manageMessage($page = 1) {
+    $this->authority(20);
+
+    $msg_table = new MessageTable;
+    $count = $msg_table->count();
+    $page = Util::calculate_page($count, 10, $page);
+    $msgs = $msg_table->select_ten($page['start_num']);
+
+    $view_data = array(
+        'msgs' => $msgs,
+        'page' => $page
+        );
+
+    $this->my_render('manage_message', $view_data);
 }
 
 // 管理公告
