@@ -147,6 +147,18 @@ public static function simple_purify($data){
 	return strip_tags($data);
 }
 
+/*截取字符串
+ *str 字符串
+ *len 截取长度
+ */
+public static function shrink_text($str, $len) {
+    if(strlen($str) > $len){
+        return mb_substr($str, 0, $len, 'utf-8')."...";
+    }else{
+        return $str;
+    }
+}
+
 /* 时间处理
  * the_time 当前时间
  */

@@ -16,12 +16,20 @@
     padding-top: 11px;
 }
 
+.fill {
+    width: 100%;
+}
+
 .margin-top-10 {
     margin-top: 10px;
 }
 
 .margin-top-30 {
     margin-top: 30px;
+}
+
+.modal-body {
+    overflow: auto;
 }
 
 .navbar {
@@ -44,6 +52,10 @@
 .navbar-nav>li>a {
     padding-top: 19.5px;
     padding-bottom: 19.5px;
+}
+
+.width-50 {
+    width: 50%;
 }
 
 @media (max-width: 767px) {

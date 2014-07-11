@@ -34,20 +34,43 @@
             </li>
         <?php }?>
         <?php if (Util::has_authority(30)) {?>
-        <!-- 信息 -->
+            <!-- 信息 -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">信息 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php e(URL);?>info/contactBook/" target="content">通讯录</a></li>
+                </ul>
+            </li>
+        <?php }?>
+        <?php if (Util::has_authority(40)) {?>
+            <!-- 新闻 -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">新闻 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php e(URL);?>news/post/" target="content">发布新闻</a></li>
+                    <li><a href="<?php e(URL);?>news/manage/" target="content">管理新闻</a></li>
+                </ul>
+            </li>
+        <?php }?>
+        <!-- 活动 -->
         <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">信息 <b class="caret"></b></a>
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">活动 <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="<?php e(URL);?>info/contactBook/" target="content">通讯录</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">发起活动</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">活动管理</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">人员安排</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">经费申请</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">经费审批</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">活动照片</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">活动资料</a></li>
             </ul>
         </li>
-        <?php }?>
-        <!-- 新闻 -->
+        <!-- 文档 -->
         <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">新闻 <b class="caret"></b></a>
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">文档 <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="#">发布新闻</a></li>
-                <li><a href="#">管理新闻</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">上传文档</a></li>
+                <li><a href="<?php e(URL);?>manager/logout/">文档中心</a></li>
             </ul>
         </li>
         <!-- 系统 -->

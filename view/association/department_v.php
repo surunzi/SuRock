@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     <th>部门</th>
-                    <th>简介</th>
+                    <th class="width-50">简介</th>
                     <th>操作</th>
                 </tr>
             </thead>

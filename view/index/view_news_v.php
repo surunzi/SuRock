@@ -9,11 +9,10 @@
     </ul>
 </div>
 
-<div class="container">
-    <div id="contact" class="col-xs-12">
-        <h2>联系我们</h2>
-        <p>电话：<?php e($this->phone);?></p>
-        <p>邮箱：<?php e($this->email);?></p>
+<div id="news" class="container">
+    <div class="col-xs-12">
+        <h2><?php e($this->title);?></h2>
+        <div class="content"><?php e($this->content);?></div>
     </div>
 </div>
 
@@ -25,3 +24,19 @@
         </div>
     </div>
 </div>
+
+<div id="black-layer">
+    <img src="">
+</div>
+
+<script>
+    window.addEventListener('load', function () {
+        $('#news').on('click', 'img', function () {
+            $('#black-layer img').attr('src', $(this).attr('src'));
+            $('#black-layer').fadeIn('fast');
+        });
+        $('#black-layer').on('click', function () {
+            $(this).fadeOut('fast');
+        });
+    }, false);
+</script>

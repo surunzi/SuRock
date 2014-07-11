@@ -36,7 +36,7 @@
 <div id="footer">
     <div class="container">
         <div class="col-xs-12">
-            <p>&copy;IBM俱乐部</p>
+            <p>&copy;华南理工大学学生会</p>
             <p>Powered By <a href="https://github.com/surunzi/SuRock">SuRock</a></p>
         </div>
     </div>

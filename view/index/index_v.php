@@ -22,10 +22,13 @@
     <div class="col-xs-4">
         <h3><a href="<?php e(URL);?>index/news/">新闻</a></h3>
         <ul>
-            <li><a href="#">这里是第一条新闻</a></li>
-            <li><a href="#">这里是第一条新闻</a></li>
-            <li><a href="#">这里是第一条新闻</a></li>
-            <li><a href="#">这里是第一条新闻</a></li>
+            <?php
+            foreach ($this->news as $key => $value) {
+            ?>
+                <li><a href="<?php e(URL);?>index/view_news/<?php e($value['news_id']);?>" class="link" data-id="<?php e($value['notify_id']);?>"><?php e(Util::shrink_text($value['news_title'], 20));?></a></li>
+            <?php
+            }
+            ?>
         </ul>
     </div>
     <div class="col-xs-4">
@@ -34,7 +37,7 @@
             <?php
             foreach ($this->notifications as $key => $value) {
             ?>
-                <li><a href="#" class="link view" data-toggle="modal" data-target="#view-modal" data-id="<?php e($value['notify_id']);?>"><?php e($value['notify_title']);?></a></li>
+                <li><a href="#" class="link view" data-toggle="modal" data-target="#view-modal" data-id="<?php e($value['notify_id']);?>"><?php e(Util::shrink_text($value['notify_title'], 20));?></a></li>
             <?php
             }
             ?>
@@ -50,7 +53,7 @@
 <div id="footer">
     <div class="container">
         <div class="col-xs-12">
-            <p>&copy;IBM俱乐部</p>
+            <p>&copy;华南理工大学学生会</p>
             <p>Powered By <a href="https://github.com/surunzi/SuRock">SuRock</a></p>
         </div>
     </div>
